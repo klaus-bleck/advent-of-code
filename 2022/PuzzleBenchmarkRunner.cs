@@ -13,8 +13,8 @@ public class PuzzleBenchmarkRunner<TPuzzle>
     }
 
     [Benchmark]
-    public void RunFirst() => _puzzle.SolveFirst();
+    public object RunFirst() => _puzzle.SolveFirst();
 
     [Benchmark]
-    public void RunSecond() => _puzzle.SolveSecond();
+    public object RunSecond() => _puzzle.SolveSecond();
 }
