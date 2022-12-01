@@ -1,6 +1,7 @@
 ﻿namespace AdventOfCode;
 
-internal interface IPuzzle
+public interface IPuzzle
 {
-    void Solve();
+    object SolveFirst();
+    object SolveSecond();
 }
