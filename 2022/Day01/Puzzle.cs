@@ -1,4 +1,6 @@
-﻿namespace AdventOfCode.Day01;
+﻿using AdventOfCode.Utils;
+
+namespace AdventOfCode.Day01;
 
 public class Puzzle : IPuzzle
 {
@@ -8,7 +10,7 @@ public class Puzzle : IPuzzle
         var nextGroupIndex = 0;
 
         return InputProvider
-            .Iterate()
+            .Iterate(1)
             .Select((x, i) =>
             {
                 if (x.Length == 0)
