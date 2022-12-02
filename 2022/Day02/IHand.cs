@@ -3,5 +3,5 @@
 internal interface IHand
 {
     Score Value { get; }
-    HandResult Play(IHand otherHand);
+    HandResult Versus(IHand otherHand);
 }

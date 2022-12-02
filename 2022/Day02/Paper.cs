@@ -4,7 +4,7 @@ internal class Paper : IHand
 {
     public Score Value => new(2);
 
-    public HandResult Play(IHand otherHand)
+    public HandResult Versus(IHand otherHand)
     {
         return otherHand switch
         {

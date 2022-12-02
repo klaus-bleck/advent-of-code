@@ -4,7 +4,7 @@ internal class Rock : IHand
 {
     public Score Value => new(1);
 
-    public HandResult Play(IHand otherHand)
+    public HandResult Versus(IHand otherHand)
     {
         return otherHand switch
         {

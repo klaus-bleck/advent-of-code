@@ -4,7 +4,7 @@ internal class Scissors : IHand
 {
     public Score Value => new(3);
 
-    public HandResult Play(IHand otherHand)
+    public HandResult Versus(IHand otherHand)
     {
         return otherHand switch
         {
