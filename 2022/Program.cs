@@ -1,5 +1,5 @@
 ﻿using AdventOfCode;
-using AdventOfCode.Day02;
+using AdventOfCode.Day03;
 
 PuzzleRunner.Run<Puzzle>();
 //BenchmarkDotNet.Running.BenchmarkRunner.Run<PuzzleBenchmarkRunner<Puzzle>>();
