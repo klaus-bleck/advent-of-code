@@ -12,34 +12,37 @@ internal class CrateMatrix
         _stacks = CreateStacks(input);
     }
 
-    private static void FillQueueList(string line, Stack<Crate>[] crateQueues)
+    private static void FillStackList(string line, Stack<Crate>[] crateStacks)
     {
         for (int i = 0; i < line.Length; i += CrateLengthWithSpace)
         {
-            var index = i / CrateLengthWithSpace;
-            var queue = crateQueues[index];
-            if (queue is null)
-            {
-                queue = new Stack<Crate>();
-                crateQueues[index] = queue;
-            }
-
             if (line[i] is '[')
             {
-                queue.Push(new(line[i + 1]));
+                crateStacks[i / CrateLengthWithSpace].Push(new(line[i + 1]));
             }
         }
     }
 
+    private static Stack<Crate>[] CrateStackList(string[] input)
+    {
+        var stackList = new Stack<Crate>[input[0].Length / CrateLengthWithSpace + 1];
+        for (int i = 0; i < stackList.Length; i++)
+        {
+            stackList[i] = new Stack<Crate>(input.Length);
+        }
+        return stackList;
+    }
+
     private static Stack<Crate>[] CreateStacks(string[] input)
     {
-        var queueList = new Stack<Crate>[input[0].Length / CrateLengthWithSpace + 1];
+        var stackList = CrateStackList(input);
+
         foreach (var line in input)
         {
-            FillQueueList(line, queueList);
+            FillStackList(line, stackList);
         }
 
-        return queueList.Select(localStack =>
+        return stackList.Select(localStack =>
         {
             var stack = new Stack<Crate>();
             while (localStack.Count > 0)
