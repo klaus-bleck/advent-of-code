@@ -7,12 +7,6 @@ internal sealed class Grid
     private readonly Dictionary<int, HashSet<Marker>> _visitedPositions;
     private readonly Position[] _knots;
 
-    public Grid()
-        : this(0)
-    {
-
-    }
-
     public Grid(int knots)
     {
         _knots = new Position[knots];
