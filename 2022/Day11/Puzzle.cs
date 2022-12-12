@@ -25,7 +25,6 @@ internal class Puzzle : IPuzzle
                     var nextMonkey = monkey.Throw(item);
                     monkeys[nextMonkey].Items.Enqueue(item % reduceProduct);
                 }
-                monkey.Items.Clear();
             }
         }
 
