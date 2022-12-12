@@ -9,7 +9,7 @@ internal class Puzzle : IPuzzle
 
     public object SolveFirst()
     {
-        var cpu = new Cpu(GetSample());
+        var cpu = new Cpu(GetInput());
         var result = 0L;
         var relevantTicks = new HashSet<int>
         {
