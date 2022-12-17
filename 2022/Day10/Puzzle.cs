@@ -1,13 +1,10 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day10;
 
-namespace AdventOfCode.Day10;
-
-internal class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
-    private static IEnumerable<string> GetInput() => InputProvider.Iterate(10);
-    private static IEnumerable<string> GetSample() => InputProvider.IterateSample(10);
+    protected override uint Day => 10;
 
-    public object SolveFirst()
+    public override object SolveFirst()
     {
         var cpu = new Cpu(GetInput());
         var result = 0L;
@@ -23,7 +20,7 @@ internal class Puzzle : IPuzzle
         return result;
     }
 
-    public object SolveSecond()
+    public override object SolveSecond()
     {
         var cpu = new Cpu(GetInput());
         var crt = new Crt();

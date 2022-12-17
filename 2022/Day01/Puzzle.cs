@@ -1,16 +1,15 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day01;
 
-namespace AdventOfCode.Day01;
-
-public class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
-    private static long GetCalories(int elfCount)
+    protected override uint Day => 1;
+
+    private long GetCalories(int elfCount)
     {
         var lastDivider = -1;
         var nextGroupIndex = 0;
 
-        return InputProvider
-            .Iterate(1)
+        return GetInput()
             .Select((x, i) =>
             {
                 if (x.Length == 0)
@@ -28,6 +27,6 @@ public class Puzzle : IPuzzle
             .Sum(x => x.Value);
     }
 
-    public object SolveFirst() => GetCalories(1);
-    public object SolveSecond() => GetCalories(3);
+    public override object SolveFirst() => GetCalories(1);
+    public override object SolveSecond() => GetCalories(3);
 }

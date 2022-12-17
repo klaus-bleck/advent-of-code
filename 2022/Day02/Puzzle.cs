@@ -1,9 +1,9 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day02;
 
-namespace AdventOfCode.Day02;
-
-public class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
+    protected override uint Day => 2;
+
     private static IHand ParseHand(string enemyHand) =>
         enemyHand switch
         {
@@ -28,13 +28,13 @@ public class Puzzle : IPuzzle
     private static Round ParseRoundByExtracting(string[] line) =>
         new(ParseHand(line[0]), ExtractHand(line[0], line[1]));
 
-    private static int GetTotalScore(Func<string[], Round> calculator)
+    private int GetTotalScore(Func<string[], Round> calculator)
     {
-        return InputProvider.Iterate(2)
+        return GetInput()
             .Select(x => calculator(x.Split(" ")))
             .Sum(x => x.Play().Value);
     }
 
-    public object SolveFirst() => GetTotalScore(ParseRound);
-    public object SolveSecond() => GetTotalScore(ParseRoundByExtracting);
+    public override object SolveFirst() => GetTotalScore(ParseRound);
+    public override object SolveSecond() => GetTotalScore(ParseRoundByExtracting);
 }

@@ -1,10 +1,8 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day03;
 
-namespace AdventOfCode.Day03;
-
-internal class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
-    private static IEnumerable<string> GetInput() => InputProvider.Iterate(3);
+    protected override uint Day => 3;
 
     private static long GetPriority(char item) =>
         item switch
@@ -23,6 +21,6 @@ internal class Puzzle : IPuzzle
     private static char GetDuplicate(string[] lines) => 
         lines[0].First(x => lines[1].Contains(x) && lines[2].Contains(x));
 
-    public object SolveFirst() => GetInput().Select(GetDuplicate).Sum(x => GetPriority(x));
-    public object SolveSecond() => GetInput().Chunk(3).Select(GetDuplicate).Sum(x => GetPriority(x));
+    public override object SolveFirst() => GetInput().Select(GetDuplicate).Sum(x => GetPriority(x));
+    public override object SolveSecond() => GetInput().Chunk(3).Select(GetDuplicate).Sum(x => GetPriority(x));
 }

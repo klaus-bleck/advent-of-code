@@ -1,18 +1,16 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day08;
 
-namespace AdventOfCode.Day08;
-
-internal class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
-    private static IEnumerable<string> GetInput() => InputProvider.Iterate(8);
+    protected override uint Day => 8;
 
-    public object SolveFirst()
+    public override object SolveFirst()
     {
         var grid = Grid.Parse(GetInput());
         return grid.CalculateVisibleTrees();        
     }
 
-    public object SolveSecond()
+    public override object SolveSecond()
     {
         var grid = Grid.Parse(GetInput());
         return grid.CalculateHighestScore();

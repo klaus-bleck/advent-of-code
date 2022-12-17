@@ -3,7 +3,7 @@
 namespace AdventOfCode;
 
 public class PuzzleBenchmarkRunner<TPuzzle>
-    where TPuzzle : IPuzzle, new()
+    where TPuzzle : PuzzleBase, new()
 {
     private readonly TPuzzle _puzzle;
 

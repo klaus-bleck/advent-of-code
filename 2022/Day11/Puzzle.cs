@@ -1,16 +1,13 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day11;
 
-namespace AdventOfCode.Day11;
-
-internal class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
-    private static IEnumerable<string> GetInput() => InputProvider.Iterate(11);
-    private static IEnumerable<string> GetSample() => InputProvider.IterateSample(11);
+    protected override uint Day => 11;
 
     private static ulong GetMonkeyItemReduceProduct(Monkey[] monkeys) =>
         monkeys.Select(x => x.Test.DivisibleBy).Aggregate((a, b) => a * b);
 
-    private static ulong CalculateMonkeyBusiness(int rounds, ulong divider)
+    private ulong CalculateMonkeyBusiness(int rounds, ulong divider)
     {
         var monkeys = MonkeyParser.Parse(GetInput());
         var reduceProduct = GetMonkeyItemReduceProduct(monkeys);
@@ -35,6 +32,6 @@ internal class Puzzle : IPuzzle
             .Aggregate((x, y) => x * y);
     }
 
-    public object SolveFirst() => CalculateMonkeyBusiness(20, 3L);
-    public object SolveSecond() => CalculateMonkeyBusiness(10_000, 1L);
+    public override object SolveFirst() => CalculateMonkeyBusiness(20, 3L);
+    public override object SolveSecond() => CalculateMonkeyBusiness(10_000, 1L);
 }

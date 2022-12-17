@@ -1,10 +1,8 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day05;
 
-namespace AdventOfCode.Day05;
-
-internal class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
-    private static IEnumerable<string> GetInput() => InputProvider.Iterate(5);
+    protected override uint Day => 5;
 
     private enum ParseMode
     {
@@ -51,7 +49,7 @@ internal class Puzzle : IPuzzle
         return (crateMatrixBuilder.Build(), instructions.ToArray());
     }
 
-    private static string GetTopCrates(Action<CrateMatrix, Instruction> action)
+    private string GetTopCrates(Action<CrateMatrix, Instruction> action)
     {
         var (crateMatrix, instructions) = Parse(GetInput());
         foreach(var instruction in instructions)
@@ -61,6 +59,6 @@ internal class Puzzle : IPuzzle
         return crateMatrix.GetTopCrates();
     }
 
-    public object SolveFirst() => GetTopCrates((crateMatrix, instruction) => crateMatrix.Apply(instruction));
-    public object SolveSecond() => GetTopCrates((crateMatrix, instruction) => crateMatrix.ApplyBlock(instruction));
+    public override object SolveFirst() => GetTopCrates((crateMatrix, instruction) => crateMatrix.Apply(instruction));
+    public override object SolveSecond() => GetTopCrates((crateMatrix, instruction) => crateMatrix.ApplyBlock(instruction));
 }

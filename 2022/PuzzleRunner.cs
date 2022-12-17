@@ -2,7 +2,7 @@
 
 internal static class PuzzleRunner
 {    
-    public static void Run<TPuzzle>() where TPuzzle : IPuzzle, new()
+    public static void Run<TPuzzle>() where TPuzzle : PuzzleBase, new()
     {
         var puzzle = new TPuzzle();
         Console.WriteLine(puzzle.SolveFirst());

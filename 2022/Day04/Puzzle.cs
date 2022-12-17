@@ -1,10 +1,8 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day04;
 
-namespace AdventOfCode.Day04;
-
-internal class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
-    private static IEnumerable<string> GetInput() => InputProvider.Iterate(4);    
+    protected override uint Day => 4;    
 
     private static long[][] GetElfRanges(string line) =>
         line.Split(",").Select(x => x.Split("-").Select(long.Parse).ToArray()).ToArray();
@@ -27,6 +25,6 @@ internal class Puzzle : IPuzzle
         return IsOverlapping(elfRanges[0], elfRanges[1]) || IsOverlapping(elfRanges[1], elfRanges[0]);
     }
 
-    public object SolveFirst() => GetInput().Count(IsFullyContained);
-    public object SolveSecond() => GetInput().Count(IsOverlapping);
+    public override object SolveFirst() => GetInput().Count(IsFullyContained);
+    public override object SolveSecond() => GetInput().Count(IsOverlapping);
 }

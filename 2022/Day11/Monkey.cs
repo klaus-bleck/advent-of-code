@@ -6,7 +6,7 @@ internal sealed class Monkey
 
     public int Number { get; }
     public Queue<ulong> Items { get; } 
-    public Delegate Operation { get; private set; }
+    public Delegate? Operation { get; private set; }
     public Test Test { get; }
     public ulong Inspected { get; private set; }
 
@@ -18,7 +18,7 @@ internal sealed class Monkey
     }
 
     private ulong Operate(object[] arguments) =>
-        (ulong)Operation.DynamicInvoke(arguments);
+        (ulong)(Operation?.DynamicInvoke(arguments) ?? throw new InvalidOperationException());
 
     public ulong Inspect()
     {

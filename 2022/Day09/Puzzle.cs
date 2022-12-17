@@ -1,11 +1,8 @@
-﻿using AdventOfCode.Utils;
+﻿namespace AdventOfCode.Day09;
 
-namespace AdventOfCode.Day09;
-
-internal class Puzzle : IPuzzle
+internal class Puzzle : PuzzleBase
 {
-    private static IEnumerable<string> GetInput() => InputProvider.Iterate(9);
-    private static IEnumerable<string> GetSample() => InputProvider.IterateSample(9);
+    protected override uint Day => 9;
 
     private static void ApplyCommand(Grid grid, string command, int amount)
     {
@@ -19,7 +16,7 @@ internal class Puzzle : IPuzzle
         }
     }
 
-    private static int GetVisitedPositionsByKnot(int knots)
+    private int GetVisitedPositionsByKnot(int knots)
     {
         var grid = new Grid(knots);
         foreach (var command in GetInput())
@@ -31,6 +28,6 @@ internal class Puzzle : IPuzzle
         return grid.GetVisitedMarkerForKnot(knots);
     }
 
-    public object SolveFirst() => GetVisitedPositionsByKnot(2);
-    public object SolveSecond() => GetVisitedPositionsByKnot(10);
+    public override object SolveFirst() => GetVisitedPositionsByKnot(2);
+    public override object SolveSecond() => GetVisitedPositionsByKnot(10);
 }

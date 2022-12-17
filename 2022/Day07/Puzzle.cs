@@ -1,11 +1,8 @@
-﻿using AdventOfCode.Utils;
-using Microsoft.CodeAnalysis;
+﻿namespace AdventOfCode.Day07;
 
-namespace AdventOfCode.Day07;
-
-internal class Puzzle : IPuzzle
+public class Puzzle : PuzzleBase
 {
-    private static IEnumerable<string> GetInput() => InputProvider.Iterate(7);
+    protected override uint Day => 7;
 
     private static bool IsCommand(string input) => input.StartsWith("$");
 
@@ -36,7 +33,7 @@ internal class Puzzle : IPuzzle
         }
     }
 
-    private static FileSystem GetFileSystem()
+    private FileSystem GetFileSystem()
     {
         var fileSystem = new FileSystem();
         string? lastCommand = null;
@@ -58,7 +55,7 @@ internal class Puzzle : IPuzzle
         return fileSystem;
     }
 
-    private static ulong GetTotalSize()
+    private ulong GetTotalSize()
     {
         var fileSystem = GetFileSystem();
         var totalSize = 0UL;
@@ -73,7 +70,7 @@ internal class Puzzle : IPuzzle
         return totalSize;
     }
 
-    private static ulong GetTotalSizeForUpdate()
+    private ulong GetTotalSizeForUpdate()
     {
         var fileSystem = GetFileSystem();
         var updateSize = 30000000UL;
@@ -90,6 +87,6 @@ internal class Puzzle : IPuzzle
         return totalSize;
     }
 
-    public object SolveFirst() => GetTotalSize();
-    public object SolveSecond() => GetTotalSizeForUpdate();
+    public override object SolveFirst() => GetTotalSize();
+    public override object SolveSecond() => GetTotalSizeForUpdate();
 }
