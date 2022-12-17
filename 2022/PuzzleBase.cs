@@ -9,7 +9,7 @@ public abstract class PuzzleBase : IPuzzle
     protected IEnumerable<string> GetInput() => InputProvider.Iterate(Day);
     protected IEnumerable<string> GetSample() => InputProvider.IterateSample(Day);
 
-    public abstract object SolveFirst();
+    public virtual object SolveFirst() => string.Empty;
 
-    public abstract object SolveSecond();
+    public virtual object SolveSecond() => string.Empty;
 }
