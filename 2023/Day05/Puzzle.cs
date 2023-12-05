@@ -44,7 +44,7 @@ public class Puzzle : PuzzleBase
         return new(seeds, [.. maps]);
     }
 
-    //public override object SolveFirst() => Parse(GetInput()).GetLowestLocation();
+    public override object SolveFirst() => Parse(GetInput()).GetLowestLocation();
 
     public override object SolveSecond() => Parse(GetInput()).GetLowestLocationWithPairs();
 }
