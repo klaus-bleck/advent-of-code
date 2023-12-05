@@ -42,7 +42,7 @@ public class Puzzle : PuzzleBase
         foreach (var game in cardGames)
         {
             MarkGame(game, 1);
-            if (game.Matches.Length > 0 && game.Index <= cardGames.Count)
+            if (game.Matches.Length > 0 && game.Index < cardGames.Count)
             {
                 var copies = cardGames[game.Index..Math.Min(game.Index + game.Matches.Length, cardGames.Count)];
                 foreach (var copy in copies)
