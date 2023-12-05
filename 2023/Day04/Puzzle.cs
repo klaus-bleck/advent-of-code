@@ -42,18 +42,13 @@ public class Puzzle : PuzzleBase
         foreach (var game in cardGames)
         {
             MarkGame(game, 1);
-
-            Console.WriteLine("Index " + game.Index + " with " + game.Matches.Length + " matches");
             if (game.Matches.Length > 0 && game.Index <= cardGames.Count)
             {
-                Console.WriteLine("copy for " + (game.Index + 1) + ".." + (Math.Min(game.Index + game.Matches.Length, cardGames.Count)));
-
                 var copies = cardGames[game.Index..Math.Min(game.Index + game.Matches.Length, cardGames.Count)];
                 foreach (var copy in copies)
                 {
                     MarkGame(copy, gamesVisited[game.Index]);
                 }
-                Console.WriteLine();
             }
         }
         return gamesVisited.Values.Sum();
